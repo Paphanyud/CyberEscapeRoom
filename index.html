@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Escape Room - Mission Start</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>CYBER ESCAPE: CODE BREAK (25 LEVELS)</h1>
+    </header>
+
+    <div id="game-stats">
+        <span id="current-score">คะแนน: 0</span> | 
+        <span id="highest-streak">สถิติถูกติดต่อกัน: 0</span>
+    </div>
+
+    <h2 class="section-title">I. Cryptography & Logic</h2>
+
+    <div id="stage-1" class="game-stage">
+        <h2>คำถามที่ 1: การถอดรหัสฐานสอง</h2>
+        <p class="puzzle-text">คุณพบคอมพิวเตอร์ที่ล็อคอยู่ จงแปลงรหัสฐานสอง **01010001** ให้เป็นเลขทศนิยม (Decimal) เพื่อปลดล็อค</p>
+        <div class="code-display">01010001</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(1, 'A')">A. 79</button>
+            <button onclick="checkChoice(1, 'B')">B. 81</button>
+            <button onclick="checkChoice(1, 'C')">C. 87</button>
+        </div>
+        <p id="feedback-1" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-2" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 2: Hexadecimal Code</h2>
+        <p class="puzzle-text">พบคีย์ลับที่เข้ารหัสฐานสิบหก (Hex) **1A** จงแปลงเป็นเลขฐานสิบ (Decimal) ที่ถูกต้อง</p>
+        <div class="code-display">1A</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(2, 'A')">A. 16</button>
+            <button onclick="checkChoice(2, 'B')">B. 25</button>
+            <button onclick="checkChoice(2, 'C')">C. 26</button>
+        </div>
+        <p id="feedback-2" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-3" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 3: ASCII Code</h2>
+        <p class="puzzle-text">ระบบต้องการตัวอักษร 'K' จงระบุรหัส ASCII Decimal ที่ถูกต้องของตัวอักษรนี้</p>
+        <div class="code-display">K</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(3, 'A')">A. 75</button>
+            <button onclick="checkChoice(3, 'B')">B. 77</button>
+            <button onclick="checkChoice(3, 'C')">C. 68</button>
+        </div>
+        <p id="feedback-3" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-4" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 4: OR Logic Gate</h2>
+        <p class="puzzle-text">จงระบุ Output ของวงจรตรรกะ OR Gate เมื่อ Input เป็น **1 OR 0**</p>
+        <div class="code-display">1 OR 0 = ?</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(4, 'A')">A. 1</button>
+            <button onclick="checkChoice(4, 'B')">B. 0</button>
+            <button onclick="checkChoice(4, 'C')">C. Error</button>
+        </div>
+        <p id="feedback-4" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-5" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 5: XOR Logic Gate</h2>
+        <p class="puzzle-text">จงระบุ Output ของวงจรตรรกะ XOR Gate เมื่อ Input เป็น **1 XOR 1**</p>
+        <div class="code-display">1 XOR 1 = ?</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(5, 'A')">A. 1</button>
+            <button onclick="checkChoice(5, 'B')">B. 10</button>
+            <button onclick="checkChoice(5, 'C')">C. 0</button>
+        </div>
+        <p id="feedback-5" class="feedback-message"></p>
+    </div>
+
+    <h2 class="section-title">II. User Protection</h2>
+
+    <div id="stage-6" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 6: Phishing URL</h2>
+        <p class="puzzle-text">จงระบุลิงก์ที่น่าสงสัยที่สุด (มีการสะกดผิด) ที่ส่งมาพร้อมอีเมลปลอม</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(6, 'A')">A. mail.google.com/login</button>
+            <button onclick="checkChoice(6, 'B')">B. goggle.com/logins.html</button>
+            <button onclick="checkChoice(6, 'C')">C. accounts.google.com</button>
+        </div>
+        <p id="feedback-6" class="feedback-message"></p>
+    </div>
+    
+    <div id="stage-7" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 7: Password Policy</h2>
+        <p class="puzzle-text">รหัสผ่านใดที่ถือว่า "แข็งแกร่งที่สุด" ตามหลักการรักษาความปลอดภัย?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(7, 'A')">A. P@sswOrd123!</button>
+            <button onclick="checkChoice(7, 'B')">B. Myname1999</button>
+            <button onclick="checkChoice(7, 'C')">C. Computer2025</button>
+        </div>
+        <p id="feedback-7" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-8" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 8: Social Engineering</h2>
+        <p class="puzzle-text">การที่แฮ็กเกอร์โทรหาพนักงานและปลอมตัวเป็น 'เจ้าหน้าที่ IT' เพื่อขอรหัสผ่าน เรียกว่าการโจมตีแบบใด?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(8, 'A')">A. Phishing</button>
+            <button onclick="checkChoice(8, 'B')">B. Whaling</button>
+            <button onclick="checkChoice(8, 'C')">C. Pretexting</button>
+        </div>
+        <p id="feedback-8" class="feedback-message"></p>
+    </div>
+    
+    <div id="stage-9" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 9: Multi-Factor Authentication (MFA)</h2>
+        <p class="puzzle-text">Multi-Factor Authentication (MFA) คืออะไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(9, 'A')">A. การยืนยันตัวตน 2 ชั้นขึ้นไป (เช่น รหัสผ่าน + รหัส OTP)</button>
+            <button onclick="checkChoice(9, 'B')">B. การใช้รหัสผ่านที่มีตัวพิมพ์เล็กและใหญ่</button>
+            <button onclick="checkChoice(9, 'C')">C. การตรวจสอบใบหน้าและลายนิ้วมือเท่านั้น</button>
+        </div>
+        <p id="feedback-9" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-10" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 10: Ransomware</h2>
+        <p class="puzzle-text">หากสงสัยว่าคอมพิวเตอร์ติด Ransomware (ไวรัสเรียกค่าไถ่) สิ่งแรกที่ควรทำคืออะไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(10, 'A')">A. จ่ายเงินค่าไถ่เพื่อกู้ข้อมูล</button>
+            <button onclick="checkChoice(10, 'B')">B. ตัดการเชื่อมต่อเครือข่าย/Wi-Fi ทันที</button>
+            <button onclick="checkChoice(10, 'C')">C. รีสตาร์ทเครื่องเพื่อให้ไวรัสหายไปเอง</button>
+        </div>
+        <p id="feedback-10" class="feedback-message"></p>
+    </div>
+
+    <h2 class="section-title">III. System & Network</h2>
+
+    <div id="stage-11" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 11: Network Security</h2>
+        <p class="puzzle-text">อุปกรณ์ใดทำหน้าที่ **กรองและควบคุมการเข้าออก** ของข้อมูลจากภายนอก/อินเทอร์เน็ต</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(11, 'A')">A. Router</button>
+            <button onclick="checkChoice(11, 'B')">B. Switch</button>
+            <button onclick="checkChoice(11, 'C')">C. Firewall</button>
+        </div>
+        <p id="feedback-11" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-12" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 12: IP Address</h2>
+        <p class="puzzle-text">ข้อใดคือตัวอย่างของ Private IP Address (ที่ใช้ในเครือข่ายภายใน) ที่ถูกต้อง?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(12, 'A')">A. 192.168.1.1</button>
+            <button onclick="checkChoice(12, 'B')">B. 8.8.8.8</button>
+            <button onclick="checkChoice(12, 'C')">C. 203.0.113.1</button>
+        </div>
+        <p id="feedback-12" class="feedback-message"></p>
+    </div>
+    
+    <div id="stage-13" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 13: Network Port</h2>
+        <p class="puzzle-text">Port ใดที่ใช้สำหรับการสื่อสารของ HTTP (Hypertext Transfer Protocol) หรือการเข้าเว็บแบบปกติ?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(13, 'A')">A. Port 21 (FTP)</button>
+            <button onclick="checkChoice(13, 'B')">B. Port 443 (HTTPS)</button>
+            <button onclick="checkChoice(13, 'C')">C. Port 80 (HTTP)</button>
+        </div>
+        <p id="feedback-13" class="feedback-message"></p>
+    </div>
+    
+    <div id="stage-14" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 14: Denial of Service (DoS)</h2>
+        <p class="puzzle-text">การโจมตีแบบ DoS มีเป้าหมายหลักในการทำสิ่งใดต่อ Server?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(14, 'A')">A. ขโมยข้อมูลส่วนบุคคล</button>
+            <button onclick="checkChoice(14, 'B')">B. ทำให้ Server หรือบริการหยุดทำงานเพราะรับ Traffic มากเกินไป</button>
+            <button onclick="checkChoice(14, 'C')">C. เข้ารหัสไฟล์ใน Server เพื่อเรียกค่าไถ่</button>
+        </div>
+        <p id="feedback-14" class="feedback-message"></p>
+    </div>
+    
+    <div id="stage-15" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 15: VPN</h2>
+        <p class="puzzle-text">หน้าที่หลักของ VPN (Virtual Private Network) คืออะไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(15, 'A')">A. สร้างช่องทางเข้ารหัส (Encrypted Tunnel) ส่วนตัวผ่านอินเทอร์เน็ตสาธารณะ</button>
+            <button onclick="checkChoice(15, 'B')">B. เพิ่มความเร็วในการดาวน์โหลดไฟล์ขนาดใหญ่</button>
+            <button onclick="checkChoice(15, 'C')">C. ทำหน้าที่เป็น Firewall ป้องกันไวรัสโดยตรง</button>
+        </div>
+        <p id="feedback-15" class="feedback-message"></p>
+    </div>
+
+    <h2 class="section-title">IV. Data Management</h2>
+
+    <div id="stage-16" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 16: SQL Select</h2>
+        <p class="puzzle-text">จงเลือกคำสั่ง SQL ที่ใช้ในการ **ดึงข้อมูลทั้งหมด** จากตารางชื่อ 'Users'</p>
+        <div class="code-display">FROM Users;</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(16, 'A')">A. GET *</button>
+            <button onclick="checkChoice(16, 'B')">B. SELECT *</button>
+            <button onclick="checkChoice(16, 'C')">C. VIEW *</button>
+        </div>
+        <p id="feedback-16" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-17" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 17: SQL Update</h2>
+        <p class="puzzle-text">หากต้องการ **แก้ไขข้อมูล** (เช่น เปลี่ยนสถานะผู้ใช้) ในตาราง SQL ต้องใช้คำสั่งใดนำหน้า?</p>
+        <div class="code-display">status = 'active';</div>
+        <div class="choice-area">
+            <button onclick="checkChoice(17, 'A')">A. UPDATE</button>
+            <button onclick="checkChoice(17, 'B')">B. INSERT INTO</button>
+            <button onclick="checkChoice(17, 'C')">C. SET</button>
+        </div>
+        <p id="feedback-17" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-18" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 18: Data Backup</h2>
+        <p class="puzzle-text">กฎการสำรองข้อมูล (Backup) ที่ได้รับการยอมรับอย่างกว้างขวางและปลอดภัยที่สุดคือข้อใด?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(18, 'A')">A. Backup ทุกวัน</button>
+            <button onclick="checkChoice(18, 'B')">B. เก็บสำเนา 2 ชุดในที่เดียวกัน</button>
+            <button onclick="checkChoice(18, 'C')">C. 3-2-1 Rule (3 สำเนา, 2 ประเภทสื่อ, 1 นอกสถานที่)</button>
+        </div>
+        <p id="feedback-18" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-19" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 19: GDPR/PDPA</h2>
+        <p class="puzzle-text">กฎหมาย GDPR (ยุโรป) และ PDPA (ไทย) เกี่ยวข้องกับอะไรโดยตรง?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(19, 'A')">A. การป้องกันการแฮ็กระบบคอมพิวเตอร์</button>
+            <button onclick="checkChoice(19, 'B')">B. การคุ้มครองข้อมูลส่วนบุคคล</button>
+            <button onclick="checkChoice(19, 'C')">C. กฎหมายลิขสิทธิ์ซอฟต์แวร์</button>
+        </div>
+        <p id="feedback-19" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-20" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 20: Incident Response</h2>
+        <p class="puzzle-text">ขั้นตอนแรกในการรับมือเหตุการณ์ (Incident Response) คืออะไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(20, 'A')">A. Identification (ระบุตัวตน/ขอบเขตของการโจมตี)</button>
+            <button onclick="checkChoice(20, 'B')">B. Containment (การจำกัดวง)</button>
+            <button onclick="checkChoice(20, 'C')">C. Recovery (การกู้คืนระบบ)</button>
+        </div>
+        <p id="feedback-20" class="feedback-message"></p>
+    </div>
+
+    <h2 class="section-title">V. GRC & Risk Management</h2>
+
+    <div id="stage-21" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 21: Risk Assessment</h2>
+        <p class="puzzle-text">ขั้นตอนแรกในการเริ่มต้นกระบวนการบริหารจัดการความเสี่ยง (Risk Assessment) คืออะไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(21, 'A')">A. การกำหนดวงเงินงบประมาณเพื่อป้องกัน</button>
+            <button onclick="checkChoice(21, 'B')">B. การเลือกซื้อโปรแกรม Antivirus</button>
+            <button onclick="checkChoice(21, 'C')">C. การระบุสินทรัพย์ (Assets) และภัยคุกคาม (Threats)</button>
+        </div>
+        <p id="feedback-21" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-22" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 22: BCP</h2>
+        <p class="puzzle-text">BCP (Business Continuity Plan) คือแผนที่ออกแบบมาเพื่อจุดประสงค์หลักข้อใด?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(22, 'A')">A. แผนการตลาดเพื่อขยายฐานลูกค้าใหม่</button>
+            <button onclick="checkChoice(22, 'B')">B. แผนการดำเนินธุรกิจต่อได้ทันทีหลังเกิดภัยพิบัติหรือเหตุการณ์ร้ายแรง</button>
+            <button onclick="checkChoice(22, 'C')">C. แผนการลดต้นทุนการดำเนินงานในระยะยาว</button>
+        </div>
+        <p id="feedback-22" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-23" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 23: Digital Forensics</h2>
+        <p class="puzzle-text">Digital Forensics มีบทบาทหลักในการสอบสวนเหตุการณ์ความปลอดภัยอย่างไร?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(23, 'A')">A. การเก็บรักษาและวิเคราะห์หลักฐานดิจิทัลอย่างเป็นระบบเพื่อใช้ในทางกฎหมาย</button>
+            <button onclick="checkChoice(23, 'B')">B. การสร้างระบบสำรองข้อมูล (Backup) ใหม่ทั้งหมด</button>
+            <button onclick="checkChoice(23, 'C')">C. การติดตั้งโปรแกรมป้องกันไวรัสบนเครื่องคอมพิวเตอร์</button>
+        </div>
+        <p id="feedback-23" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-24" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 24: ผลกระทบที่ไม่ใช่ตัวเงิน</h2>
+        <p class="puzzle-text">จากการถูกโจมตีทางไซเบอร์ ข้อใดคือผลกระทบที่ **ไม่ใช่** ผลกระทบทางการเงินโดยตรง?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(24, 'A')">A. ค่าใช้จ่ายในการจ้างผู้เชี่ยวชาญกู้คืนระบบ</button>
+            <button onclick="checkChoice(24, 'B')">B. ความเสียหายต่อชื่อเสียงและความเชื่อมั่นของลูกค้า</button>
+            <button onclick="checkChoice(24, 'C')">C. ค่าปรับทางกฎหมายจากการละเมิดข้อมูล</button>
+        </div>
+        <p id="feedback-24" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-25" class="game-stage" style="display: none;">
+        <h2>คำถามที่ 25: PDPA</h2>
+        <p class="puzzle-text">พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล (PDPA) มีจุดมุ่งหมายหลักในการปกป้องสิทธิของใครเป็นหลัก?</p>
+        <div class="choice-area">
+            <button onclick="checkChoice(25, 'A')">A. ผู้ควบคุมข้อมูล (Data Controller)</button>
+            <button onclick="checkChoice(25, 'B')">B. ผู้ประมวลผลข้อมูล (Data Processor)</button>
+            <button onclick="checkChoice(25, 'C')">C. เจ้าของข้อมูลส่วนบุคคล (Data Subject)</button>
+        </div>
+        <p id="feedback-25" class="feedback-message"></p>
+    </div>
+
+    <div id="stage-final" class="game-stage" style="display: none;">
+        <h2 style="color: #00ff41;">⭐ MISSION COMPLETE! (25/25) ⭐</h2>
+        <p class="puzzle-text" id="final-message">คุณกอบกู้ระบบและบริหารจัดการความเสี่ยงทั้งหมดได้สำเร็จ! โครงการฝึกอบรมเสร็จสมบูรณ์แล้ว</p>
+        <button onclick="window.location.reload()" style="margin-top: 20px;">เริ่มภารกิจใหม่</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
